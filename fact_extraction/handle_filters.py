@@ -21,31 +21,40 @@ def normalize_all_params(raw_parameters):
     else:
         facts['facts'][0]['action'] = raw_parameters['action']
 
-    if raw_parameters['TimeFact'][0] == None:
+    if not raw_parameters.get('Hour'):
         facts['facts'][0]['time'] = None
     else:
-        facts['facts'][0]['time'] = '-'.join(['%02d'%i if i is not None else '00' for i in raw_parameters['TimeFact']])
+        time = raw_parameters.get('Minutes') if raw_parameters.get('Minutes') else 0
+        facts['facts'][0]['time'] = '-'.join(['%02d'%i for i in [raw_parameters.get('Hour'), time]])
 
-    if raw_parameters['DateFact'][4] is not None:
-        facts['facts'][0]['date'] = raw_parameters['DateFact'][4]
+    if raw_parameters.get('Full'):
+        facts['facts'][0]['date'] = raw_parameters.get('Full')
         return facts
-    if raw_parameters['DateFact'][3] is not None:
+    if raw_parameters.get('DayOfWeek'):
         pass
-    if all([x is None for x in raw_parameters['DateFact'][0:3]]):
+    day = raw_parameters.get('Day')
+    month = raw_parameters.get('Month')
+    year = raw_parameters.get('Year')
+    if not any([day, month, year]):
         facts['facts'][0]['date'] = None
         return facts
-    elif raw_parameters['DateFact'][2] is None:
-        raw_parameters['DateFact'][2] = datetime.now().year
+    elif not year:
+        year = datetime.now().year
 
-    facts['facts'][0]['date'] = '-'.join(['%02d'%i for i in raw_parameters['DateFact'][0:3]])
+    facts['facts'][0]['date'] = '-'.join(['%02d'%i for i in [day, month, year]])
     return facts
 
 
 
 if __name__ == '__main__':
     print(normalize_all_params({
-    'DateFact': [28, 7, None, None, None],
-    'TimeFact': [None, None],
-    'CheckListFact': [None, None],
-    'ActionFact': [None],
-}))
+        'Day':28,
+        'Month':7,
+        'Year':None,
+        'DayOfWeek':None,
+        'Full':None,
+        'Hour':None,
+        'Minutes':None,
+        'type':None,
+        'action':None
+    }))
