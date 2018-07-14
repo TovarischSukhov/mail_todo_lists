@@ -1,0 +1,46 @@
+
+import "base.proto";
+import "facttypes_base.proto";
+
+
+    message RealtyFact: NFactType.TFact { 
+        required string type = 1; 
+    }
+    message RoomsFact: NFactType.TFact {
+         required string num_rooms = 1;
+    }
+    message PlaceFact: NFactType.TFact {
+         repeated string place = 1;
+         repeated string possible_places = 2;
+         optional string total = 3;
+    }
+    message PriceFact: NFactType.TFact {
+         required string price = 1;
+         optional string price_min = 2;
+         optional string price_max = 3;
+         optional string price_about = 4;
+    }
+    message SizeFact: NFactType.TFact {
+         required string total_size = 1;
+    }
+    message HelloFact: NFactType.TFact {
+         required string hi = 1;
+    }
+    message NPDebug: NFactType.TFact {
+         required string debug = 1;
+    }
+    message ToiletFact: NFactType.TFact {
+         optional string divided = 1;
+         optional string combined = 2;
+         optional string total = 3;
+    }
+    message BalconyFact: NFactType.TFact {
+         optional string obligatory = 1;
+         optional string preferably = 2;
+         optional string total = 3;
+    }
+    message IpotekaFact: NFactType.TFact {
+         optional string needed = 1;
+         optional string total = 3;
+    }
+

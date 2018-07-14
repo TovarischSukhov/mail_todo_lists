@@ -1,0 +1,43 @@
+
+encoding "utf8";
+
+TTextMinerConfig {
+    Dictionary = "dict.gzt";
+    Input = {
+        File = "documents_dlp.txt"; // файл с анализируемым текстом
+        Type = dpl;                 // режим чтения
+    }
+
+    // Articles and Facts begins:
+    
+Articles = [ { Name = "Недвижимость" }
+             { Name = "Комнатность"}
+             { Name = "Цена" }
+             { Name = "Место"}
+             { Name = "Площадь"}
+             { Name = "Здравица"}
+             { Name = "NP"}
+             { Name = "Туалет"}
+             { Name = "Балкон"}
+             { Name = "Ипотека" }
+             ]
+Facts = [
+{Name = "RealtyFact"}
+{Name = "RoomsFact"}
+{Name = "PriceFact"}
+{Name = "PlaceFact"}
+{Name = "SizeFact"}
+{Name = "HelloFact"}
+{Name = "NPDebug"}
+{Name = "ToiletFact"}
+{Name = "BalconyFact"}
+{Name = "IpotekaFact"}
+]
+
+    
+    NumThreads = 2;
+    
+    Output = {
+        File = "facts.xml";
+    }
+}
