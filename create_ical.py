@@ -21,9 +21,8 @@ def create_event(*args):
     return event
 
 def save_ical(event):
-    directory = tempfile.mkdtemp()
-    f = open(os.path.join(directory, 'example.ics'), 'wb')
-    f.write(cal.to_ical())
+    f = open('example.ics', 'wb')
+    f.write(event.to_ical())
     f.close()
 
 
