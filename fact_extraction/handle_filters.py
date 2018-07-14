@@ -25,7 +25,7 @@ def normalize_all_params(raw_parameters):
         facts['facts'][0]['time'] = None
     else:
         time = raw_parameters.get('Minutes') if raw_parameters.get('Minutes') else 0
-        facts['facts'][0]['time'] = '-'.join(['%02d'%i for i in [raw_parameters.get('Hour'), time]])
+        facts['facts'][0]['time'] = '-'.join(['%02d'%i[0] for i in [raw_parameters.get('Hour'), time]])
 
     if raw_parameters.get('Full'):
         facts['facts'][0]['date'] = raw_parameters.get('Full')
@@ -41,15 +41,15 @@ def normalize_all_params(raw_parameters):
     elif not year:
         year = datetime.now().year
 
-    facts['facts'][0]['date'] = '-'.join(['%02d'%i for i in [day, month, year]])
+    facts['facts'][0]['date'] = '-'.join(['%02d'%i[0] for i in [day, month, year]])
     return facts
 
 
 
 if __name__ == '__main__':
     print(normalize_all_params({
-        'Day':28,
-        'Month':7,
+        'Day':[28],
+        'Month':[7],
         'Year':None,
         'DayOfWeek':None,
         'Full':None,
