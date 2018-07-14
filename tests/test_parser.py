@@ -30,7 +30,15 @@ def test_meetup():
         'action': 'встреча'
     }]})
 
+def test_meetup_1():
+    assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 2 августа на 10:00", {"facts":[{
+        'date': "20-07-2018",
+        'time': "19:00",
+        'checklist': [],
+        'action': 'встреча'
+    }]})
+
 if __name__ == "__main__":
     parser = TomitaRunner()
     parser.setup()
-    test_todo_list()
+    test_meetup_1()
