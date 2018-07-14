@@ -1,3 +1,4 @@
+
 encoding "utf8";
 
 TTextMinerConfig {
@@ -9,28 +10,18 @@ TTextMinerConfig {
 
     // Articles and Facts begins:
     
-Articles = [ { Name = "Недвижимость" }
-             { Name = "Комнатность"}
-             { Name = "Цена" }
-             { Name = "Место"}
-             { Name = "Площадь"}
-             { Name = "Здравица"}
-             { Name = "NP"}
-             { Name = "Туалет"}
-             { Name = "Балкон"}
-             { Name = "Ипотека" }
+Articles = [ 
+             { Name = "день_недели"}
+             { Name = "дата"}
+             { Name = "время"}
+             { Name = "туду"}
+             { Name = "действие"}
              ]
 Facts = [
-{Name = "RealtyFact"}
-{Name = "RoomsFact"}
-{Name = "PriceFact"}
-{Name = "PlaceFact"}
-{Name = "SizeFact"}
-{Name = "HelloFact"}
-{Name = "NPDebug"}
-{Name = "ToiletFact"}
-{Name = "BalconyFact"}
-{Name = "IpotekaFact"}
+{Name = "DateFact"}
+{Name = "TimeFact"}
+{Name = "CheckListFact"}
+{Name = "ActionFact"}
 ]
 
     

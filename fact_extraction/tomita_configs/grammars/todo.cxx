@@ -1,3 +1,3 @@
 #encoding "utf-8"
 
-S -> S;
+S_ -> Adj Noun;

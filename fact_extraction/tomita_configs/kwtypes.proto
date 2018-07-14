@@ -3,10 +3,7 @@ import "base.proto";
 import "articles_base.proto"; 
 
 
-    message realty_type : TAuxDicArticle {};
-    message rooms_w_number : TAuxDicArticle {};
-    message sum_order : TAuxDicArticle {};
-    message geo_1 : TAuxDicArticle {};
     message number_word : TAuxDicArticle {};
-    message prefix_words : TAuxDicArticle {};
+    message action : TAuxDicArticle {};
+    message month : TAuxDicArticle {};
 

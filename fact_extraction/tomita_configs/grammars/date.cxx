@@ -9,19 +9,19 @@ Year -> Year YearDescr;
 
         // день недели, запятая, число, месяц и год:
         // "понедельник, 3 сентября 2012г."
-Date -> DayOfWeek interp (Date.DayOfWeek) (Comma)
-        Day interp (Date.Day)
-        Month interp (Date.Month)
-        (Year interp (Date.Year));
+Date -> DayOfWeek interp (DateFact.DayOfWeek) (Comma)
+        Day interp (DateFact.Day)
+        Month interp (DateFact.Month)
+        (Year interp (DateFact.Year));
 
         // число, месяц и год: "10 января 2011"
-Date -> Day interp (Date.Day)
-        Month interp (Date.Month)
-        (Year interp (Date.Year));
+Date -> Day interp (DateFact.Day)
+        Month interp (DateFact.Month)
+        (Year interp (DateFact.Year));
 
-Date -> Day interp (Date.Day)
-        Month interp (Date.Month);
+Date -> Day interp (DateFact.Day)
+        Month interp (DateFact.Month);
 
         // месяц и год: "июнь 2009"
 Date -> Month interp (DateFact.Month)
-        Year interp (Date.Year);
+        Year interp (DateFact.Year);

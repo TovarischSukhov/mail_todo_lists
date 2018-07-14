@@ -1,12 +1,25 @@
 # coding=utf-8
 import os
 
-DICTS_DIR = './fact_extraction/tomita_configs/Dicts/'
-
 GAZETTIER = '''
 TAuxDicArticle "дата"
 {
-    key = { "tomita::{grammars_path}/date.cxx" type=CUSTOM }
+    key = { "tomita:/grammars/date.cxx" type=CUSTOM }
+}
+
+TAuxDicArticle "туду"
+{
+    key = { "tomita:/grammars//todo.cxx" type=CUSTOM }
+}
+
+TAuxDicArticle "действие"
+{
+    key = { "tomita:/grammars/action.cxx" type=CUSTOM }
+}
+
+TAuxDicArticle "время"
+{
+    key = { "tomita:/grammars/time.cxx" type=CUSTOM }
 }
 
 month 'jan' {
@@ -77,16 +90,6 @@ month 'dec' {
     key = 'дек'
     key = 'dec'
     lemma = '12'
-}
-
-TAuxDicArticle "туду"
-{
-    key = { "tomita::{grammars_path}/todo.cxx" type=CUSTOM }
-}
-
-TAuxDicArticle "действие"
-{
-    key = { "tomita::{grammars_path}/action.cxx" type=CUSTOM }
 }
 
 TAuxDicArticle "месяц"
@@ -167,7 +170,7 @@ number_word 'twelve' {
     key = 'двенадцатый'
     lemma = '12'
 }
-number_word 'twelve' {
+number_word 'midnight' {
     key = 'полночь'
     lemma = '00'
 }
@@ -194,7 +197,7 @@ action 'todo' {
 }
 '''
 CONFIG = '''
-Articles = [ { Name = "месяц" }
+Articles = [ 
              { Name = "день_недели"}
              { Name = "дата"}
              { Name = "время"}
@@ -211,7 +214,10 @@ Facts = [
 
 FACTS = '''
     message DateFact: NFactType.TFact { 
-        required string type = 1; 
+        optional string Day = 1; 
+        optional string Month = 2;
+        optional string Year = 3;
+        optional string DayOfWeek = 4;  
     }
     
     message TimeFact: NFactType.TFact { 
