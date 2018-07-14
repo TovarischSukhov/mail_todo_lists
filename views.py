@@ -46,7 +46,12 @@ def get_ical():
     logger.info('Extracted facts %s', facts)
     events = []
     for fact in facts:
-        date = fact['date'].split('-')
+
+        if fact['date']:
+            date = fact['date'].split('-')
+        else:
+            date = datetime.date.today() + datetime.timedelta(days=1)
+
         if fact['time']:
             time = fact['time'].split(':')
             events.append(create_event(datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], fact['checklist'].join("\n")))
