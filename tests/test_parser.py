@@ -1,12 +1,6 @@
 # encoding: utf-8
 
-import pytest
-
-from fact_extraction.setup_parser import TomitaRunner
 from tests.test_utils import assert_parse_has
-
-parser = TomitaRunner(True)
-parser.setup()  # rebuild dicts
 
 
 def test_todo_list():
@@ -43,3 +37,6 @@ def test_buy_list():
         'checklist': ["Марк Цукерберг"],
         'action': 'встреча'
     }]})
+
+if __name__ == "__main__":
+    test_todo_list()

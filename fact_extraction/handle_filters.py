@@ -7,13 +7,9 @@ import pandas as pd
 
 from string import punctuation
 
-from settings import STOPWORDS
 
 logger = logging.getLogger(__name__)
 
-DATA_DIR = '/opt/project/data/'
-STREETS = pd.concat([pd.read_csv(DATA_DIR + f) for f in os.listdir(DATA_DIR)])
-STREETS['formal_by_word'] = STREETS.formalname.str.split(' ')
 
 DIGIT = re.compile('\d[\d| |\.]*')
 
