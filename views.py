@@ -49,6 +49,6 @@ def get_ical():
         date = fact['date'].split('-')
         if fact['time']:
             time = fact['time'].split(':')
-            events.append(create_event(datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact.keys()[2], fact[fact.keys()[2]].join("\n")))
+            events.append(create_event(datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], fact['checklist'].join("\n")))
 
     return send_file(create_ical(events))
