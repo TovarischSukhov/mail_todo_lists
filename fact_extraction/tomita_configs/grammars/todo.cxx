@@ -7,7 +7,7 @@ ToDoWord -> (NeedWord) AnyWord<kwtype='todo'>;
 
 ToDoWord -> NeedWord (AnyWord<kwtype='todo'>);
 
-//NP -> NP Comma | NP SimConjAnd;
+
 
 Action_ -> Verb NP;
 
@@ -15,5 +15,8 @@ Action -> Action_ interp (CheckListFact.type);
 
 GroupOfActions -> Action SimConjAnd GroupOfActions | Action Comma GroupOfActions | Action;
 
-ToDoList -> ToDoWord NP interp (CheckListFact.type);
-ToDoList -> NeedWord (AnyWord) (AnyWord) GroupOfActions+ ;
+NPInterp -> NP interp (CheckListFact.type);
+GroupOfNP -> NPInterp SimConjAnd GroupOfNP | NPInterp Comma GroupOfNP | NPInterp;
+
+ToDoList -> ToDoWord (Word) (Word) GroupOfNP ;
+ToDoList -> ToDoWord (AnyWord) (AnyWord) GroupOfActions+ ;

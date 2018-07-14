@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 from tests.test_utils import assert_parse_has
+from fact_extraction.setup_parser import TomitaRunner
 
 
 def test_todo_list():
@@ -13,7 +14,7 @@ def test_todo_list():
 
 
 def test_buy_list():
-    assert_parse_has("Привет, для разработки MVP, нужно закупить MSI GeForce GTX 1080 Ti GAMING X 11G 8 шт., 2 AMD Ryzen Threadripper 1950X 8 шт., HyperX HX429C17FBK4/64 4 шт.", {"facts":[{
+    assert_parse_has("Привет, кончилась еда, нужно купить молоко и сыр, пельмени и сметану", {"facts":[{
         'date': None,
         'time': None,
         'checklist': ["MSI GeForce GTX 1080 Ti GAMING X 11G 8 шт.", "2 AMD Ryzen Threadripper 1950X 8 шт.", "HyperX HX429C17FBK4/64 4 шт."],
@@ -21,22 +22,15 @@ def test_buy_list():
     }]})
 
 
-def test_sell_list():
-    assert_parse_has("Привет, нужно обновить железо фермы, продай Antminer S7 10 шт. и Radeon RX 580 20 шт.", {"facts":[{
-        'date': None,
-        'time': None,
-        'checklist': ["Antminer S7 10 шт.", "Radeon RX 580 20 шт."],
-        'action': 'продать'
-    }]})
-
-
 def test_meetup():
     assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 20-07-2018 19:00", {"facts":[{
         'date': "20-07-2018",
         'time': "19:00",
-        'checklist': ["Марк Цукерберг"],
+        'checklist': [],
         'action': 'встреча'
     }]})
 
 if __name__ == "__main__":
-    test_meetup()
+    parser = TomitaRunner()
+    parser.setup()
+    test_todo_list()

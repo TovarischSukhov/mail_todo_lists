@@ -223,7 +223,8 @@ FACTS = '''
         optional string Day = 1; 
         optional string Month = 2;
         optional string Year = 3;
-        optional string DayOfWeek = 4;  
+        optional string DayOfWeek = 4;
+        optional string Full = 5;  
     }
     
     message TimeFact: NFactType.TFact { 
@@ -246,7 +247,7 @@ KEYWORDS = """
 """
 
 FACT_DESCRIPTIONS = {
-    'DateFact': ['Day', 'Month', 'Year', 'DayOfWeek'],
+    'DateFact': ['Day', 'Month', 'Year', 'DayOfWeek', 'Full'],
     'TimeFact': ['Hour', 'Minutes'],
     'CheckListFact': ['type'],
     'ActionFact': ['action'],

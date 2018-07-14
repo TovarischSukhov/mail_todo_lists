@@ -7,7 +7,8 @@ import "facttypes_base.proto";
         optional string Day = 1; 
         optional string Month = 2;
         optional string Year = 3;
-        optional string DayOfWeek = 4;  
+        optional string DayOfWeek = 4;
+        optional string Full = 5;  
     }
     
     message TimeFact: NFactType.TFact { 

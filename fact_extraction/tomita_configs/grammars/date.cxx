@@ -26,3 +26,5 @@ Date -> Day interp (DateFact.Day) (DateSep)
         // месяц и год: "июнь 2009"
 Date -> Month interp (DateFact.Month) (DateSep)
         Year interp (DateFact.Year);
+
+Date -> AnyWord<wff=/(([1-2]?[0-9])|(3[0-1]))-((0?[1-9])|(1[0-2]))-([1-2]?[0-9]{1,3})/> interp (DateFact.Full);
