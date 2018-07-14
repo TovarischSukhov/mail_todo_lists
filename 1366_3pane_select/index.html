@@ -8,32 +8,46 @@
 		</script>
 		<div class="portal-menu-element", id="cal"><span class="calend-wrapper"><span class="calendar-button"></span></span>
 		</div>
-		<div class="mail-header"> Настроение у него было приподнятое </div>
-		<div class="line"> </div>
-		<span class="name">С</span>
-		<div class="mail-sender">
-		 	<div class="mail-sender-name">Сергей Кузнецов <span class="mail-grey">сегодня, 12:34</span></div> 
-			<div class="mail-sender-others mail-grey"> <span class='others'>12 получателей</span>: Вы, Андрей Щербаков, Dmitry Petrov, Валерий Чкалов...
+		<div class="bcg">
+			<div class="mail-header"> Настроение у него было приподнятое </div>
+			<div class="line"> </div>
+			<span class="name">С</span>
+			<div class="mail-sender">
+			 	<div class="mail-sender-name">Сергей Кузнецов <span class="mail-grey">сегодня, 12:34</span></div> 
+				<div class="mail-sender-others mail-grey"> <span class='others'>12 получателей</span>: Вы, Андрей Щербаков, Dmitry Petrov, Валерий Чкалов...
+				</div>
 			</div>
-	</div>
-		<div class="mail-body" id="mail_body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+			<div class="mail-body" id="mail_body"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+			<br />
+			<br />
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+			<br />
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<br />
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
 		</div>
+		<div class="footer"></div>
+		<script type="text/javascript">
+			data = {"id": "", "mark_read" = true, "only_html" = false}
+			$("")
+		</script>
 		<script>
 			$( "#cal" ).click(function() {
 			  alert( "Handler for .click() called." );
 			  // Send the data using post
-			  var posting = $.post( url, { 'text': $("#mail_body").text() } );
-			 
-			  // Put the results in a div
-			  posting.done(function( data ) {
-			    var content = $( data ).find( "#content" );
-			    $( "#result" ).empty().append( content );
-			  });
+			  var data = { 'text': $("#mail_body").text() }
+			  var usl = "/"
+			  jQuery.download = function(url, key, data){
+			  	// Build a form
+			    var form = $('<form></form>').attr('action', url).attr('method', 'post');
+			    // Add the one key/value
+			    form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
+			    //send request
+			    form.appendTo('body').submit().remove();
+			};
 
-			  $.fileDownload('some/file.pdf')
-			  .done(function () { alert('File download a success!'); })
-			  .fail(function () { alert('File download failed!'); });
-			});
 		</script>
 	</body>
 </html>
