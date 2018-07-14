@@ -10,8 +10,6 @@ ToDoWord -> NeedWord (AnyWord<kwtype='todo'>);
 //NP -> NP Comma | NP SimConjAnd;
 
 Action_ -> Verb NP;
-//Action_ -> Verb NP Comma NP;
-//Action_ -> Verb NP SimConjAnd NP;
 
 Action -> Action_ interp (CheckListFact.type);
 
