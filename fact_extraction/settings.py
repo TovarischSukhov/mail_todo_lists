@@ -221,7 +221,8 @@ FACTS = '''
     }
     
     message TimeFact: NFactType.TFact { 
-        required string type = 1; 
+        required string Hour = 1; 
+        optional string Minutes = 1; 
     }
     
     message CheckListFact: NFactType.TFact { 

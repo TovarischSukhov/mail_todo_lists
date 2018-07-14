@@ -1,5 +1,7 @@
 #encoding "utf-8"
 
-TimeBase -> AnyWord<wff=/([1-2]?[0-9])|(3[0-1])/>;
+TimeHour -> AnyWord<wff=/([0-1]?[0-9])|(2[0-4])/>;
+TimeMinute -> AnyWord<wff=/([0-6]?[0-9])/>;
 
-Time -> TimeBase TimeBase TimeBase;
+Time -> TimeHour interp (TimeFact.Hour) TimeMinute interp (TimeFact.Minutes);
+Time -> TimeHour interp (TimeFact.Minutes);
