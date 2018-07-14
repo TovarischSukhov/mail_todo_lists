@@ -1,5 +1,5 @@
 from datetime import datetime
-from icalendar import Event, vDatetime, vDate, cal
+from icalendar import Event, vDatetime, vDate, Calendar
 import tempfile, os
 
 def create_event(*args):
@@ -21,8 +21,10 @@ def create_event(*args):
     return event
 
 def save_ical(event):
+    cal = Calendar()
+    cal.add_component(event)
     f = open('example.ics', 'wb')
-    f.write(event.to_ical())
+    f.write(cal.to_ical())
     f.close()
 
 
