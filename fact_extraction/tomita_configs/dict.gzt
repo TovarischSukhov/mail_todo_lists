@@ -26,6 +26,11 @@ TAuxDicArticle "время"
     key = { "tomita:/grammars/time.cxx" type=CUSTOM }
 }
 
+TAuxDicArticle "np"
+{
+    key = { "tomita:/grammars/np.cxx" type=CUSTOM }
+}
+
 month 'jan' {
     key = 'январь'
     key = 'янв'

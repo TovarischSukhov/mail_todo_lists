@@ -16,6 +16,7 @@ Articles = [
              { Name = "время"}
              { Name = "туду"}
              { Name = "действие"}
+             { Name = "np"}
              ]
 Facts = [
 {Name = "DateFact"}

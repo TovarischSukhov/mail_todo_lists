@@ -11,11 +11,12 @@ import "facttypes_base.proto";
     }
     
     message TimeFact: NFactType.TFact { 
-        required string type = 1; 
+        required string Hour = 1; 
+        optional string Minutes = 2; 
     }
     
     message CheckListFact: NFactType.TFact { 
-        required string type = 1; 
+        repeated string type = 1; 
     }
     
     message ActionFact: NFactType.TFact { 
