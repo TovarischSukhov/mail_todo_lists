@@ -22,6 +22,11 @@ TAuxDicArticle "время"
     key = { "tomita:/grammars/time.cxx" type=CUSTOM }
 }
 
+TAuxDicArticle "np"
+{
+    key = { "tomita:/grammars/np.cxx" type=CUSTOM }
+}
+
 month 'jan' {
     key = 'январь'
     key = 'янв'
@@ -203,6 +208,7 @@ Articles = [
              { Name = "время"}
              { Name = "туду"}
              { Name = "действие"}
+             { Name = "np"}
              ]
 Facts = [
 {Name = "DateFact"}
@@ -222,11 +228,11 @@ FACTS = '''
     
     message TimeFact: NFactType.TFact { 
         required string Hour = 1; 
-        optional string Minutes = 1; 
+        optional string Minutes = 2; 
     }
     
     message CheckListFact: NFactType.TFact { 
-        required string type = 1; 
+        repeated string type = 1; 
     }
     
     message ActionFact: NFactType.TFact { 

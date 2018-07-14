@@ -8,4 +8,4 @@ ToDoWord -> NeedWord (AnyWord<kwtype='todo'>) | Verb;
 
 NP -> Noun;
 
-ToDoList -> ToDoWord (Verb) NP interp (CheckListFact.type);
+ToDoList -> ToDoWord (Verb) NP+ interp (CheckListFact.type);
