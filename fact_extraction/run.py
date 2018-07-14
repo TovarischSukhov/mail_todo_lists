@@ -79,12 +79,5 @@ def extract_facts(message):
     raw_parameters = result
     logger.debug('Start postprocess')
     facts = normalize_all_params(raw_parameters)
-    if facts['undefined']:
-        logger.debug('Start tomita second loop')
-        try_normal_form = tomita_parse_message(get_normal_form(facts['undefined']))
-        if try_normal_form != {}:
-            logger.debug('Start postprocess second loop')
-            facts.pop('undefined_readable')
-            facts = custom_extend_dict(facts, normalize_all_params(try_normal_form))
     logger.debug('finish')
     return facts
