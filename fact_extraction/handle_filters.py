@@ -11,12 +11,12 @@ logger = logging.getLogger(__name__)
 
 def normalize_all_params(raw_parameters):
     facts = {'facts': [{}]}
-    if all([x is None for x in raw_parameters['type']]):
+    if not raw_parameters.get('type'):
         facts['facts'][0]['checklist'] = None
     else:
         facts['facts'][0]['checklist'] = raw_parameters['type']
 
-    if all([x is None for x in raw_parameters['action']]):
+    if not raw_parameters.get('action'):
         facts['facts'][0]['action'] = None
     else:
         facts['facts'][0]['action'] = raw_parameters['action']
