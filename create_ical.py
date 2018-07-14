@@ -1,6 +1,5 @@
 from datetime import datetime
 from icalendar import Event, vDatetime, vDate, Calendar
-import tempfile, os
 
 def create_event(*args):
     event = Event()
@@ -20,13 +19,21 @@ def create_event(*args):
         event.add('dtend', vDate(datetime(*date)))
     return event
 
-def save_ical(event):
+
+def create_ical(events):
     cal = Calendar()
-    cal.add_component(event)
+    for e in events:
+        cal.add_component(e)
+    return cal
+
+
+def save_ical(events):
+    cal = create_ical(events)
     f = open('example.ics', 'wb')
     f.write(cal.to_ical())
     f.close()
 
 
-event = create_event(datetime(2018,7,28,5,0,0), datetime(2018,7,28,21,0,0), 'купить картошку', 'купить картошку')
-save_ical(event)
+# test
+# event = create_event(datetime(2018,7,28,5,0,0), datetime(2018,7,28,21,0,0), 'купить картошку', 'купить картошку')
+# save_ical(event)

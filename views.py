@@ -1,8 +1,8 @@
 # coding=utf-8
 
 import logging.config
-
-from flask import Flask, request, json
+from datetime import datetime
+from flask import Flask, request, json, send_file
 
 from fact_extraction.run import extract_facts
 from fact_extraction.network_utils import (
@@ -11,6 +11,7 @@ from fact_extraction.network_utils import (
     requires_auth,
     STATUSES,
 )
+from create_ical import create_event, create_ical
 
 app = Flask(__name__)
 logger = logging.getLogger(__name__)
@@ -35,7 +36,7 @@ def ping():
 
 @app.route('/get_ical/', methods=['POST'])
 @requires_auth
-def get_realty_facts_all():
+def get_ical():
     message = request.args.get('message')
     if not message:
         logger.info('No message passed in request.')
@@ -43,4 +44,11 @@ def get_realty_facts_all():
     logger.info('Extracting all realty facts from message %s', message)
     facts = {"facts": {key: val for key, val in extract_facts(message).items() if key in REALTY_ALL_FIELDS}}
     logger.info('Extracted facts %s', facts)
-    return success_response(facts)
+    events = []
+    for fact in facts:
+        date = fact['date'].split('-')
+        if fact['time']:
+            time = fact['time'].split(':')
+            events.append(create_event(datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact.keys()[2], fact[fact.keys()[2]].join("\n")))
+
+    return send_file(create_ical(events))
