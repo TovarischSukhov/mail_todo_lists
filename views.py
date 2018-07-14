@@ -17,15 +17,10 @@ app = Flask(__name__)
 logger = logging.getLogger(__name__)
 
 REALTY_ALL_FIELDS = [
-    "balcony",
-    "toilet",
-    "ipoteka",
-    "places",
-    "possible_places",
-    "price",
-    "rooms",
-    "size",
-    "undefined_readable",
+    "to-do list",
+    "купить",
+    "продать",
+    "встреча"
 ]
 
 
