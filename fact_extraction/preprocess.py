@@ -6,7 +6,7 @@ import pymorphy2
 MORPH = pymorphy2.MorphAnalyzer()
 
 DIGIT_LETTERS = re.compile('([0-9]+)([А-Яа-яЁё]+)')
-PUNCT_LETTERS = re.compile('([А-Яа-яЁё]+[\.|,])([А-Яа-яЁё]+)')
+PUNCT_LETTERS = re.compile('([А-Яа-яЁё0-9]+[\.|,|:|-])([А-Яа-яЁё0-9]+)')
 DASH_LETTERS_DIGITS = re.compile('([0-9]+|[А-Яа-яЁё]+)(-)([А-Яа-яЁё]+)')
 
 

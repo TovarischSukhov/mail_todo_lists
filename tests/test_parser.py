@@ -31,7 +31,7 @@ def test_sell_list():
 
 
 def test_meetup():
-    assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 20.07.2018 19:00", {"facts":[{
+    assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 20-07-2018 19:00", {"facts":[{
         'date': "20-07-2018",
         'time': "19:00",
         'checklist': ["Марк Цукерберг"],
@@ -39,4 +39,4 @@ def test_meetup():
     }]})
 
 if __name__ == "__main__":
-    test_todo_list()
+    test_meetup()

@@ -236,7 +236,7 @@ FACTS = '''
     }
     
     message ActionFact: NFactType.TFact { 
-        required string type = 1; 
+        required string action = 1; 
     }
 '''
 KEYWORDS = """
@@ -246,10 +246,10 @@ KEYWORDS = """
 """
 
 FACT_DESCRIPTIONS = {
-    'DateFact': ['type'],
-    'TimeFact': ['type'],
+    'DateFact': ['Day', 'Month', 'Year', 'DayOfWeek'],
+    'TimeFact': ['Hour', 'Minutes'],
     'CheckListFact': ['type'],
-    'ActionFact': ['type'],
+    'ActionFact': ['action'],
 }
 
 PROJECT_PATH = os.environ.get('PROJECT_PATH', '/opt/project/')

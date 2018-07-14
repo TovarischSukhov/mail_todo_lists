@@ -17,7 +17,6 @@ SPELLER('привет')
 
 
 def preprocess_text(message):
-    # TODO: ё на е
     #  Исрпавить опечатки
     message = SPELLER(message)
     # поставить пробелы
