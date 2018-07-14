@@ -30,7 +30,7 @@ def test_sell_list():
     }]})
 
 
-def test_buy_list():
+def test_meetup():
     assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 20.07.2018 19:00", {"facts":[{
         'date': "20-07-2018",
         'time': "19:00",
