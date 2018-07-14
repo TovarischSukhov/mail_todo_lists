@@ -34,3 +34,12 @@ def test_sell_list():
         'checklist': ["Antminer S7 10 шт.", "Radeon RX 580 20 шт."],
         'action': 'продать'
     }]})
+
+
+def test_buy_list():
+    assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 20.07.2018 19:00", {"facts":[{
+        'date': "20-07-2018",
+        'time': "19:00",
+        'checklist': ["Марк Цукерберг"],
+        'action': 'встреча'
+    }]})
