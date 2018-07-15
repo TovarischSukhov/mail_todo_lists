@@ -1,10 +1,11 @@
 # coding=utf-8
 
 import logging.config
-from datetime import datetime
-from flask import Flask, request, json, send_file, jsonify
-from flask_cors import CORS
 
+from flask import Flask, request, json, send_file, jsonify, send_from_directory
+from flask_cors import CORS
+from datetime import datetime as dt
+import datetime
 from fact_extraction.run import extract_facts
 from fact_extraction.network_utils import (
     success_response,
@@ -12,8 +13,8 @@ from fact_extraction.network_utils import (
     requires_auth,
     STATUSES,
 )
-from create_ical import create_event, create_ical
-
+from create_ical import create_event, create_ical, save_ical
+import json as js
 app = Flask(__name__)
 CORS(app)
 logger = logging.getLogger(__name__)
@@ -38,23 +39,30 @@ def ping(id):
     return success_response(predef_messages[int(id)])
 
 
-@app.route('/get_ical', methods=['POST','GET'])
+@app.route('/get_ical', methods=['POST'])
 def get_ical():
-    content = request.get_json(silent=True)
-
+    content = js.loads(request.form['mm'])
+    print(content)
     logger.info('Extracting all realty facts from message %s', content)
-    facts = {"facts": {key: val for key, val in extract_facts(content['message']).items() if key in REALTY_ALL_FIELDS}}
+    facts = extract_facts(content['message'])['facts']
     logger.info('Extracted facts %s', facts)
     events = []
+    fname = "cal"
     for fact in facts:
 
         if fact['date']:
             date = fact['date'].split('-')
         else:
             date = datetime.date.today() + datetime.timedelta(days=1)
+            date = [date.day, date.month, date.year]
 
         if fact['time']:
             time = fact['time'].split('-')
-            events.append(create_event(datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], fact['checklist'].join("\n")))
+        else:
+            time = [0,0]
 
-    return send_file(create_ical(events))
+        fname = fact['action']
+        events.append(create_event(dt(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], " \n ".join(fact['checklist'])))
+        save_ical(events, fact['action'])
+
+    return send_from_directory("","{}.ics".format(fname))

@@ -38,24 +38,26 @@
 			});
 		</script>
 		<script type="text/javascript">
-			jQuery.download = function(url, key, data){
-			  	// Build a form
+            jQuery.download = function(url, key, data){
+                // Build a form
 
-			    var form = $('<form></form>').attr('action', url).attr('method', 'post');
-			    // Add the one key/value
-			    form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
-			    //send request
-			    form.appendTo('body').submit().remove();
-			 };
+                var form = $('<form></form>').attr('action', url).attr('method', 'post');
+                // Add the one key/value
+                form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
+                //send request
+                form.appendTo('body').submit().remove();
+             };
 
-			$( "#cal" ).click(function() {
-			  <!--alert( "Handler for .click() called." );-->
-			  // Send the data using post
-			  var data = { 'text': $("#mail_body").text() }
-			  var url = "http://0.0.0.0:1250/get_ical"
-			  console.log(url);
-              $.download(url, 'message', data);
-			});
+            $( "#cal" ).click(function() {
+              $.getJSON( "http://0.0.0.0:1250/message/"+url, function(response) {
+
+                var data = JSON.stringify({"message": response['data'] })
+                  var url = "http://0.0.0.0:1250/get_ical"
+
+                  $.download(url, 'mm', data);
+                });
+            });
+
 		</script>
 	</body>
 </html>

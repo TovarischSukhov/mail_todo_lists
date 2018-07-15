@@ -15,8 +15,8 @@ def create_event(*args):
         date = args[0]
         event.add('summary', args[1])
         event.add('description', args[2])
-        event.add('dtstart', vDate(datetime(*date)))
-        event.add('dtend', vDate(datetime(*date)))
+        event.add('dtstart', vDatetime(date))
+        event.add('dtend', vDatetime(date))
     return event
 
 
@@ -27,13 +27,13 @@ def create_ical(events):
     return cal
 
 
-def save_ical(events):
+def save_ical(events, fname):
     cal = create_ical(events)
-    f = open('example.ics', 'wb')
+    f = open("{}.ics".format(fname), 'wb')
     f.write(cal.to_ical())
     f.close()
 
 
 # test
-# event = create_event(datetime(2018,7,28,5,0,0), datetime(2018,7,28,21,0,0), 'купить картошку', 'купить картошку')
+# event = create_event(datetime(2018,7,28,5,0,0), 'купить картошку', 'купить картошку')
 # save_ical(event)
