@@ -2,6 +2,15 @@
 
 /* Boiler plate CSS */
 
+.ad {
+    content:url('images/ad.png');
+    width: 488px;
+    height:806px;
+    position: absolute;
+    margin-left: 2220px;
+    margin-top:-1413px;
+}
+
 .sk-ab {
 	position: relative;
 	overflow: hidden;

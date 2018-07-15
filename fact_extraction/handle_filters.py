@@ -43,7 +43,7 @@ def normalize_all_params(raw_parameters):
     elif not year:
         year = [str(datetime.now().year)]
         print(year)
-    facts['facts'][0]['date'] = '-'.join(['%02d'%int(i[0]) for i in [day, month, year]])
+    facts['facts'][0]['date'] = ['-'.join(['%02d'%int(i[0]) for i in [day, month, year]])]
     return facts
 
 

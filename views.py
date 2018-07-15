@@ -51,7 +51,7 @@ def get_ical():
     for fact in facts:
 
         if fact['date']:
-            date = fact['date'].split('-')
+            date = fact['date'][0].split('-')
         else:
             date = datetime.date.today() + datetime.timedelta(days=1)
             date = [date.day, date.month, date.year]
@@ -62,7 +62,12 @@ def get_ical():
             time = [10,0]
 
         fname = fact['action']
-        events.append(create_event(dt(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], " \n ".join(fact['checklist'])))
-        save_ical(events, fact['action'])
+        if fact['checklist']:
+            checklist = " \n ".join(fact['checklist'])
+        else:
+            checklist = fact['action']
+        print(date, time, checklist)
+        events.append(create_event(dt(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], checklist))
+        save_ical(events, 'cal')
 
-    return send_from_directory("","{}.ics".format(fname))
+    return send_from_directory("","cal.ics")
