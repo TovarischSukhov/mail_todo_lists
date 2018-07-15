@@ -27,7 +27,7 @@
 .portal-menu-element {
 	display: inline-block;
 	animation: fade-in .1s;
-	margin-top: 63px;
+	margin-top: 68px;
 	margin-left: 1800px;
 	font-family: Helvetica,Arial,Tahoma,Verdana,sans-serif;
 	font-size: 30px;
@@ -35,9 +35,16 @@
 .calendar-button {
 	background:linear-gradient(38deg,rgb(253,168,64) 3%,#ffac00 96%);
 	display: inline-block;
-	width: 66px;
-    height: 66px;
+	width: 56px;
+    height: 56px;
 	border-radius: 50%;
+}
+.img-cal {
+	content: url("images/calendar.png");
+	width: 41px;
+    height: 41px;
+	padding-top: 7px;
+	padding-left:7px;
 }
 .name {
 	background:linear-gradient(38deg,rgb(253,168,64) 3%,#ffac00 96%);
@@ -50,7 +57,7 @@
 	font-family: Helvetica,Arial,Tahoma,Verdana,sans-serif;
 	font-size: 59px;
 	display: inline-block;
-	position: fixed;
+	position: absolute;
 	margin-left: 62px;
 	margin-top: 28px;
 }
@@ -111,7 +118,7 @@
 	background-color: white;
 	margin-left: 508px;
 	padding-top: 1px;
-	margin-top: 14px;
+	margin-top: 21px;
 	width: 1700px;
 }
 body {
