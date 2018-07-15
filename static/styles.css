@@ -27,22 +27,22 @@
 .portal-menu-element {
 	display: inline-block;
 	animation: fade-in .1s;
-	margin-top: 68px;
-	margin-left: 1800px;
+	margin-top: 73px;
+	margin-left: 1750px;
 	font-family: Helvetica,Arial,Tahoma,Verdana,sans-serif;
 	font-size: 30px;
 }
 .calendar-button {
 	background:linear-gradient(38deg,rgb(253,168,64) 3%,#ffac00 96%);
 	display: inline-block;
-	width: 56px;
-    height: 56px;
+	width: 46px;
+    height: 46px;
 	border-radius: 50%;
 }
 .img-cal {
 	content: url("images/calendar.png");
-	width: 41px;
-    height: 41px;
+	width: 31px;
+    height: 31px;
 	padding-top: 7px;
 	padding-left:7px;
 }
@@ -118,7 +118,7 @@
 	background-color: white;
 	margin-left: 508px;
 	padding-top: 1px;
-	margin-top: 21px;
+	margin-top: 24px;
 	width: 1700px;
 }
 body {
