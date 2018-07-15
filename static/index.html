@@ -7,7 +7,7 @@
 	<body>
 		<script src="https://code.jquery.com/jquery-1.10.2.js">
 		</script>
-		<div class="portal-menu-element", id="cal"><span class="calend-wrapper"><span class="calendar-button"></span></span>
+		<div class="portal-menu-element" id="cal"><span class="calend-wrapper"><span class="calendar-button"></span></span>
 		</div>
 		<div class="bcg">
 			<div class="mail-header"> Настроение у него было приподнятое </div>
@@ -33,36 +33,29 @@
 		<script type="text/javascript">
 			<!--data = {"id": "", "mark_read" = true, "only_html" = false}-->
 			var url = $(location).attr('href').split("/")[3];
-			console.log("http://0.0.0.0:1250/"+url)
-			$.get( "http://0.0.0.0:1250/"+url, function( data ) {
-			  console.log(data);
+			$.getJSON( "http://0.0.0.0:1250/message/"+url, function(response) {
+			  $('#mail_body').text(response['data']);
 			});
-			 <!--$.ajax({-->
-				<!--url: "http://0.0.0.0:1250/ping",-->
-				<!--type: "GET",-->
-				<!--crossDomain: true,-->
-				<!--success: function (response) {-->
-					<!--console.log(response);-->
-				<!--}-->
-        	<!--});-->
-
-			<!--$("")-->
 		</script>
-		<script>
-			<!--$( "#cal" ).click(function() {-->
-			  <!--alert( "Handler for .click() called." );-->
-			  <!--// Send the data using post-->
-			  <!--var data = { 'text': $("#mail_body").text() }-->
-			  <!--var usl = "/"-->
-			  <!--jQuery.download = function(url, key, data){-->
-			  	<!--// Build a form-->
-			    <!--var form = $('<form></form>').attr('action', url).attr('method', 'post');-->
-			    <!--// Add the one key/value-->
-			    <!--form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));-->
-			    <!--//send request-->
-			    <!--form.appendTo('body').submit().remove();-->
-			<!--};-->
+		<script type="text/javascript">
+			jQuery.download = function(url, key, data){
+			  	// Build a form
 
+			    var form = $('<form></form>').attr('action', url).attr('method', 'post');
+			    // Add the one key/value
+			    form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
+			    //send request
+			    form.appendTo('body').submit().remove();
+			 };
+
+			$( "#cal" ).click(function() {
+			  <!--alert( "Handler for .click() called." );-->
+			  // Send the data using post
+			  var data = { 'text': $("#mail_body").text() }
+			  var url = "http://0.0.0.0:1250/get_ical"
+			  console.log(url);
+              $.download(url, 'message', data);
+			});
 		</script>
 	</body>
 </html>
