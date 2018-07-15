@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import logging.config
-
+import requests
 from flask import Flask, request, json, send_file, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime as dt
@@ -36,7 +36,16 @@ predef_messages = [
 
 @app.route('/message/<id>', methods=['GET'])
 def ping(id):
-    return success_response(predef_messages[int(id)])
+    if int(id) <4:
+        return success_response(predef_messages[int(id)])
+    else:
+        params = {'access_token': '57da9ea5824071cab4da378434ba71d9ba735fb537363830',
+                  'email':'smartmail_team11@mail.ru',
+                  'only_html':'false',
+                  'mark_read':'true',
+                  'id':id}
+        resp = requests.post("https://e.mail.ru/api/v1/messages/message", params).json()
+        return success_response(resp['body']['body']['text'])
 
 
 @app.route('/get_ical', methods=['POST'])
