@@ -32,9 +32,9 @@ def test_meetup():
 
 def test_meetup_1():
     assert_parse_has("Привет, назначь встречу с Марком Цукербергом на 2 августа на 10:00", {"facts":[{
-        'date': "20-07-2018",
-        'time': "19:00",
-        'checklist': [],
+        'date': "02-08-2018",
+        'time': "10:00",
+        'checklist': None,
         'action': 'встреча'
     }]})
 

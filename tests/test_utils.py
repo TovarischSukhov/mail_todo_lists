@@ -45,6 +45,8 @@ def have_json(tmpl, jsn, is_sort_dicts=True):
 
 
 def assert_have_json(tmpl, jsn, is_sort_dicts=True):
+    print(tmpl)
+    print(jsn)
     assert have_json(tmpl, jsn, is_sort_dicts=is_sort_dicts) == {}
 
 

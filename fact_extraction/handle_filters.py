@@ -11,21 +11,23 @@ logger = logging.getLogger(__name__)
 
 def normalize_all_params(raw_parameters):
     facts = {'facts': [{}]}
+    print(raw_parameters)
     if not raw_parameters.get('type'):
         facts['facts'][0]['checklist'] = None
     else:
-        facts['facts'][0]['checklist'] = raw_parameters['type']
+        facts['facts'][0]['checklist'] = [chl.lower() for chl in raw_parameters['type']]
 
     if not raw_parameters.get('action'):
         facts['facts'][0]['action'] = None
     else:
-        facts['facts'][0]['action'] = raw_parameters['action']
+        facts['facts'][0]['action'] = raw_parameters['action'][0].lower()
 
     if not raw_parameters.get('Hour'):
         facts['facts'][0]['time'] = None
     else:
         time = raw_parameters.get('Minutes') if raw_parameters.get('Minutes') else 0
-        facts['facts'][0]['time'] = '-'.join(['%02d'%i[0] for i in [raw_parameters.get('Hour'), time]])
+        print([int(i[0]) for i in [raw_parameters.get('Hour'), time]])
+        facts['facts'][0]['time'] = '-'.join(['%02d'%int(i[0]) for i in [raw_parameters.get('Hour'), time]])
 
     if raw_parameters.get('Full'):
         facts['facts'][0]['date'] = raw_parameters.get('Full')
@@ -39,9 +41,9 @@ def normalize_all_params(raw_parameters):
         facts['facts'][0]['date'] = None
         return facts
     elif not year:
-        year = datetime.now().year
-
-    facts['facts'][0]['date'] = '-'.join(['%02d'%i[0] for i in [day, month, year]])
+        year = [str(datetime.now().year)]
+        print(year)
+    facts['facts'][0]['date'] = '-'.join(['%02d'%int(i[0]) for i in [day, month, year]])
     return facts
 
 
