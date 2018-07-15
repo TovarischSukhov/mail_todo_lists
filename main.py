@@ -17,4 +17,4 @@ if __name__ == '__main__':
     parser.setup()
     logger.info('Parser ready to go!')
 
-    app.run(host='0.0.0.0', port=80, debug=False)
+    app.run(host='0.0.0.0', port=1250, debug=False)

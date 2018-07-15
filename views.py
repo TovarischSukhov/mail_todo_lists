@@ -2,7 +2,8 @@
 
 import logging.config
 from datetime import datetime
-from flask import Flask, request, json, send_file
+from flask import Flask, request, json, send_file, jsonify
+from flask_cors import CORS
 
 from fact_extraction.run import extract_facts
 from fact_extraction.network_utils import (
@@ -14,6 +15,7 @@ from fact_extraction.network_utils import (
 from create_ical import create_event, create_ical
 
 app = Flask(__name__)
+CORS(app)
 logger = logging.getLogger(__name__)
 
 REALTY_ALL_FIELDS = [

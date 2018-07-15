@@ -31,23 +31,37 @@
 		</div>
 		<div class="footer"></div>
 		<script type="text/javascript">
-			data = {"id": "", "mark_read" = true, "only_html" = false}
-			$("")
+			<!--data = {"id": "", "mark_read" = true, "only_html" = false}-->
+			var url = $(location).attr('href').split("/")[3];
+			console.log("http://0.0.0.0:1250/"+url)
+			$.get( "http://0.0.0.0:1250/"+url, function( data ) {
+			  console.log(data);
+			});
+			 <!--$.ajax({-->
+				<!--url: "http://0.0.0.0:1250/ping",-->
+				<!--type: "GET",-->
+				<!--crossDomain: true,-->
+				<!--success: function (response) {-->
+					<!--console.log(response);-->
+				<!--}-->
+        	<!--});-->
+
+			<!--$("")-->
 		</script>
 		<script>
-			$( "#cal" ).click(function() {
-			  alert( "Handler for .click() called." );
-			  // Send the data using post
-			  var data = { 'text': $("#mail_body").text() }
-			  var usl = "/"
-			  jQuery.download = function(url, key, data){
-			  	// Build a form
-			    var form = $('<form></form>').attr('action', url).attr('method', 'post');
-			    // Add the one key/value
-			    form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));
-			    //send request
-			    form.appendTo('body').submit().remove();
-			};
+			<!--$( "#cal" ).click(function() {-->
+			  <!--alert( "Handler for .click() called." );-->
+			  <!--// Send the data using post-->
+			  <!--var data = { 'text': $("#mail_body").text() }-->
+			  <!--var usl = "/"-->
+			  <!--jQuery.download = function(url, key, data){-->
+			  	<!--// Build a form-->
+			    <!--var form = $('<form></form>').attr('action', url).attr('method', 'post');-->
+			    <!--// Add the one key/value-->
+			    <!--form.append($("<input></input>").attr('type', 'hidden').attr('name', key).attr('value', data));-->
+			    <!--//send request-->
+			    <!--form.appendTo('body').submit().remove();-->
+			<!--};-->
 
 		</script>
 	</body>
