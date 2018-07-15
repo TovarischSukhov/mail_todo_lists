@@ -1,0 +1,28 @@
+FROM ubuntu:16.04
+
+RUN echo 'get requirements for tomita' && apt-get update && apt-get install -y build-essential
+RUN apt-get install -y cmake lua5.2
+
+RUN echo 'install git' && apt-get install -y git
+
+RUN echo 'clone tomita' && \
+    git clone https://github.com/yandex/tomita-parser && \
+    cd './tomita-parser' && \
+    mkdir -p build
+WORKDIR './tomita-parser/build'
+RUN cmake ../src/ -DCMAKE_BUILD_TYPE=Release
+RUN make -j 2
+
+WORKDIR './bin'
+COPY libmystem_c_binding.so .
+
+RUN apt-get install -y python3 && \
+	apt-get install -y python3-pip && \
+	apt-get clean
+RUN pip3 install --upgrade pip
+
+WORKDIR '/'
+
+ENV TOMITA_PATH '/tomita-parser/build/bin/tomita-parser'
+
+ENV LANG C.UTF-8

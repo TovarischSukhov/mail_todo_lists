@@ -1,0 +1,9 @@
+
+import "base.proto";
+import "articles_base.proto"; 
+
+
+    message number_word : TAuxDicArticle {};
+    message action : TAuxDicArticle {};
+    message month : TAuxDicArticle {};
+

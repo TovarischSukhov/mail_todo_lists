@@ -1,0 +1,3 @@
+icalendar==4.0.2
+deepdiff=3.3.0
+lxml=4.2.3

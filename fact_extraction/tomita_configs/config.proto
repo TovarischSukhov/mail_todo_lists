@@ -1,0 +1,34 @@
+
+encoding "utf8";
+
+TTextMinerConfig {
+    Dictionary = "dict.gzt";
+    Input = {
+        File = "documents_dlp.txt"; // файл с анализируемым текстом
+        Type = dpl;                 // режим чтения
+    }
+
+    // Articles and Facts begins:
+    
+Articles = [ 
+             { Name = "день_недели"}
+             { Name = "дата"}
+             { Name = "время"}
+             { Name = "туду"}
+             { Name = "действие"}
+             { Name = "np"}
+             ]
+Facts = [
+{Name = "DateFact"}
+{Name = "TimeFact"}
+{Name = "CheckListFact"}
+{Name = "ActionFact"}
+]
+
+    
+    NumThreads = 2;
+    
+    Output = {
+        File = "facts.xml";
+    }
+}

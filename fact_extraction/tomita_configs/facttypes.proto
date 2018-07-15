@@ -1,0 +1,26 @@
+
+import "base.proto";
+import "facttypes_base.proto";
+
+
+    message DateFact: NFactType.TFact { 
+        optional string Day = 1; 
+        optional string Month = 2;
+        optional string Year = 3;
+        optional string DayOfWeek = 4;
+        optional string Full = 5;  
+    }
+    
+    message TimeFact: NFactType.TFact { 
+        required string Hour = 1; 
+        optional string Minutes = 2; 
+    }
+    
+    message CheckListFact: NFactType.TFact { 
+        repeated string type = 1; 
+    }
+    
+    message ActionFact: NFactType.TFact { 
+        required string action = 1; 
+    }
+
