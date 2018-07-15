@@ -59,7 +59,7 @@ def get_ical():
         if fact['time']:
             time = fact['time'].split('-')
         else:
-            time = [0,0]
+            time = [10,0]
 
         fname = fact['action']
         events.append(create_event(dt(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]),0), fact['action'], " \n ".join(fact['checklist'])))
